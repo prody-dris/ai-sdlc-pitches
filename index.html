@@ -1,215 +1,295 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dhwani SDLC — AI-Native Pitches. The Day-1 framework in three parts: Requirement Gathering · Knowledge Management · Larger SDLC.">
+<link rel="icon" type="image/svg+xml" href="https://prody-dris.github.io/ai-playground-sessions/assets/logo.svg">
+<meta property="og:site_name" content="Dhwani SDLC — AI-Native Pitches">
+<meta property="og:title" content="Dhwani SDLC — One framework, three pitches.">
+<meta property="og:description" content="The Day-1 framework in three parts: Requirement Gathering · Knowledge Management · Larger SDLC.">
+<meta property="og:type" content="article">
 <title>Dhwani SDLC — AI-Native Pitches</title>
+<link rel="stylesheet" href="https://prody-dris.github.io/ai-playground-sessions/assets/style.css?v=7">
 <style>
-  :root {
-    --bg: #0a0a0a;
-    --fg: #f5f5f4;
-    --muted: #a1a1aa;
-    --line: #27272a;
-    --accent: #ff6b35;
-    --accent-soft: rgba(255, 107, 53, 0.12);
-    --card: #141414;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; min-height: 100%; }
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
-    font-weight: 400;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  .nav {
-    padding: 16px 32px;
-    border-bottom: 1px solid var(--line);
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 13px;
-    color: var(--muted);
-  }
-  .nav .brand { color: var(--accent); font-weight: 600; letter-spacing: 0.02em; }
-  .nav .meta { font-variant-numeric: tabular-nums; }
+  /* Hub-specific overrides on top of AI Playground brand */
+  body { padding-top: 0; }
 
-  main { padding: 80px 80px 60px; max-width: 1400px; margin: 0 auto; }
+  .hub-header {
+    background: var(--sidebar-bg);
+    border-bottom: 1px solid var(--sidebar-border);
+    padding: 14px 28px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hub-header .logo-text {
+    font-size: 14px; font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.2px;
+  }
+  .hub-header .crumb {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 0.3px;
+  }
+  .hub-header .spacer { flex: 1; }
+  .hub-header .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-light);
+  }
 
-  .hero { margin-bottom: 64px; }
-  .hero p.tag {
-    color: var(--accent);
-    font-size: 13px;
-    font-weight: 600;
+  .hub-main {
+    max-width: clamp(720px, 86vw, 1200px);
+    margin: 0 auto;
+    padding: 36px 32px 40px;
+  }
+
+  /* Hero section with subtle dark gradient hero-banner style */
+  .hub-hero {
+    background: linear-gradient(135deg, #1E1E1E 0%, #2a1010 50%, #3d1515 100%);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+  .hub-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(212, 132, 42, 0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hub-hero .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    margin: 0 0 16px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    background: rgba(212, 132, 42, 0.14);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 18px;
   }
-  .hero h1 {
-    font-size: clamp(48px, 6vw, 88px);
-    line-height: 1.05;
-    margin: 0 0 24px;
-    letter-spacing: -0.02em;
+  .hub-hero .hero-badge .pulse {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  .hub-hero h1 {
+    font-size: 38px;
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+    margin-bottom: 14px;
+    color: #fff;
     font-weight: 700;
+    position: relative; z-index: 1;
   }
-  .hero p.lede { font-size: 22px; line-height: 1.45; color: var(--muted); max-width: 900px; margin: 0; }
+  .hub-hero h1 span { color: var(--accent); }
+  .hub-hero p.lede {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.65;
+    max-width: 680px;
+    position: relative; z-index: 1;
+    margin: 0;
+  }
+  .hub-hero p.lede strong { color: rgba(255,255,255,0.92); }
 
-  .parts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  /* Three parts grid (using session-card-like pattern) */
+  .parts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
   .part {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 22px 22px;
     text-decoration: none;
     color: inherit;
-    transition: all 200ms ease;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    border-top: 3px solid var(--rule);
   }
-  .part:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
+  .part.live {
+    border-top-color: var(--accent);
+    background: linear-gradient(180deg, rgba(212,132,42,0.04), var(--card-bg));
   }
-  .part.live { border-color: var(--accent); background: linear-gradient(180deg, var(--accent-soft), var(--card)); }
-  .part.pending { opacity: 0.65; cursor: default; }
-  .part.pending:hover { transform: none; border-color: var(--line); }
-  .part .label {
+  .part.live:hover {
+    border-color: rgba(212, 132, 42, 0.35);
+    box-shadow: 0 4px 16px rgba(212, 132, 42, 0.10);
+    transform: translateY(-2px);
+  }
+  .part.pending { opacity: 0.78; cursor: default; }
+  .part .part-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
     color: var(--accent);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+  .part.pending .part-num { color: var(--text-light); }
+  .part h2 {
+    font-size: 19px; font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.25;
+    text-transform: none;
+    letter-spacing: -0.2px;
+  }
+  .part .owner {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 12px;
   }
-  .part h2 {
-    font-size: 28px;
-    line-height: 1.15;
-    margin: 0 0 12px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-  .part p { font-size: 15px; color: var(--muted); margin: 0 0 24px; flex: 1; }
-  .part .owner {
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 16px;
+  .part .desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    flex: 1;
   }
   .part .status {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
   }
-  .part.pending .status { color: var(--muted); }
-  .status .dot {
-    width: 8px; height: 8px;
+  .part.live .status { color: var(--accent); }
+  .part.pending .status { color: var(--text-light); }
+  .part .status .dot {
+    width: 7px; height: 7px;
     border-radius: 50%;
+  }
+  .part.live .status .dot {
     background: var(--accent);
-    box-shadow: 0 0 12px var(--accent);
+    box-shadow: 0 0 8px var(--accent);
   }
-  .part.pending .status .dot { background: var(--muted); box-shadow: none; }
+  .part.pending .status .dot { background: var(--text-light); }
 
-  .meta-block {
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+  /* Meta block */
+  .meta-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .meta-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px 18px;
   }
-  .meta-block .item .label {
-    font-size: 11px;
-    color: var(--muted);
+  .meta-card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 700;
+    color: var(--text-light);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 1.5px;
     margin-bottom: 8px;
   }
-  .meta-block .item .value { font-size: 15px; color: var(--fg); }
-  .meta-block .item .value b { color: var(--accent); }
-
-  footer {
-    padding: 32px 80px;
-    text-align: center;
-    color: var(--muted);
+  .meta-card .value {
     font-size: 13px;
-    border-top: 1px solid var(--line);
-    margin-top: 80px;
+    color: var(--text-mid);
+    line-height: 1.55;
   }
+  .meta-card .value b { color: var(--primary); font-weight: 700; }
 
   @media (max-width: 900px) {
-    main { padding: 40px 24px; }
-    .parts { grid-template-columns: 1fr; }
-    .meta-block { grid-template-columns: 1fr; }
+    .parts-grid, .meta-cards { grid-template-columns: 1fr; }
+    .hub-hero h1 { font-size: 28px; }
+    .hub-main { padding: 24px 20px; }
   }
 </style>
 </head>
 <body>
 
-<div class="nav">
-  <div class="brand">Dhwani SDLC · AI-Native Pitches</div>
+<div class="hub-header">
+  <div class="logo-text">Dhwani SDLC</div>
+  <div class="crumb">AI-Native Pitches Hub</div>
+  <div class="spacer"></div>
   <div class="meta">14 May 2026 · Day-1 framework</div>
 </div>
 
-<main>
+<div class="hub-main">
 
-<div class="hero">
-  <p class="tag">Closing Session 2/2 · 12:30 – 1:30 PM IST</p>
-  <h1>One framework, three pitches.</h1>
-  <p class="lede">The AI-led SDLC, structured per Day-1 (12 May 2026): three streams of software delivery, two always-on supports. Today we present one part each. Direction alignment first; pair-wise development after; v1 to the larger workgroup by EoD.</p>
+<div class="hub-hero">
+  <div class="hero-badge"><span class="pulse"></span> Closing Session 2/2 · 12:30 – 1:30 PM IST</div>
+  <h1>One framework<span>,</span> three pitches<span>.</span></h1>
+  <p class="lede">The AI-led SDLC, structured per Day-1 (12 May 2026): three streams of software delivery, two always-on supports. <strong>Today we present one part each.</strong> Direction alignment first; pair-wise development after; v1 to the larger workgroup by EoD.</p>
 </div>
 
-<div class="parts">
-  <a href="https://prody-dris.github.io/ai-sdlc-rg-pitch/" class="part live">
-    <div class="label">Part 1 of 3</div>
-    <h2>SDLC — Requirement Gathering</h2>
-    <div class="owner">Owner · Nihaan + Harshdeep</div>
-    <p>Intent → Solutioning → TRD. 10 steps × tool × skill. Four-stack overlay with calibrated intensity per stack.</p>
-    <div class="status"><span class="dot"></span> Live · 21 slides</div>
-  </a>
+<section>
+  <h2>The Three Parts</h2>
+  <div class="parts-grid">
+    <a href="https://prody-dris.github.io/ai-sdlc-rg-pitch/" class="part live">
+      <div class="part-num">Part 1 of 3</div>
+      <h2>SDLC — Requirement Gathering</h2>
+      <div class="owner">Owner · Nihaan + Harshdeep</div>
+      <div class="desc">Intent → Solutioning → TRD. 10 steps × tool × skill. Four-stack overlay with calibrated intensity per stack. Tool philosophy: GitHub + Claude CLI replace SaaS.</div>
+      <div class="status"><span class="dot"></span>Live · 21 slides</div>
+    </a>
 
-  <div class="part pending">
-    <div class="label">Part 2 of 3</div>
-    <h2>Knowledge Management</h2>
-    <div class="owner">Owner · Deepak</div>
-    <p>The always-on KM stream. Tools and skills that run across every SDLC phase — from MoM intake through Sol Doc archival to post-go-live retros.</p>
-    <div class="status"><span class="dot"></span> In development</div>
-  </div>
+    <div class="part pending">
+      <div class="part-num">Part 2 of 3</div>
+      <h2>Knowledge Management</h2>
+      <div class="owner">Owner · Deepak</div>
+      <div class="desc">The always-on KM stream. Tools and skills that run across every SDLC phase — from MoM intake through Sol Doc archival to post-go-live retros.</div>
+      <div class="status"><span class="dot"></span>In development</div>
+    </div>
 
-  <div class="part pending">
-    <div class="label">Part 3 of 3</div>
-    <h2>Larger SDLC Pitch</h2>
-    <div class="owner">Owner · Working Group</div>
-    <p>The full picture: all five streams, the three verticals, the four stacks, and the rollout cadence. The umbrella that ties the parts together.</p>
-    <div class="status"><span class="dot"></span> In development</div>
+    <div class="part pending">
+      <div class="part-num">Part 3 of 3</div>
+      <h2>Larger SDLC Pitch</h2>
+      <div class="owner">Owner · Working Group</div>
+      <div class="desc">The full picture: all five streams, the three verticals, the four stacks, and the rollout cadence. The umbrella that ties the parts together.</div>
+      <div class="status"><span class="dot"></span>In development</div>
+    </div>
   </div>
+</section>
+
+<section>
+  <h2>Day-1 Context</h2>
+  <div class="meta-cards">
+    <div class="meta-card">
+      <div class="label">Working Group · 12 May 2026</div>
+      <div class="value">Nihaan · Ankit · Navjeet · Harshdeep · Abhijit · Deepak · Swapnil · Shweta</div>
+    </div>
+    <div class="meta-card">
+      <div class="label">Stream Owners</div>
+      <div class="value">DevOps · <b>Ankit</b> &nbsp;·&nbsp; KM · <b>Deepak</b> &nbsp;·&nbsp; SDLC · <b>Nihaan</b></div>
+    </div>
+    <div class="meta-card">
+      <div class="label">Cadence</div>
+      <div class="value">Bi-weekly framework review &nbsp;·&nbsp; <b>Monday 18 May 2026</b> rollout</div>
+    </div>
+  </div>
+</section>
+
+<div class="main-footer" style="margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+  <a href="https://prody-dris.github.io/ai-playground-sessions/" style="font-size: 12px; color: var(--text-light); text-decoration: none; font-weight: 500;">← AI Playground Sessions</a>
+  <small style="font-size: 11px; color: var(--text-light);">Dhwani RIS · Group PM Office · 14 May 2026</small>
 </div>
 
-<div class="meta-block">
-  <div class="item">
-    <div class="label">Day-1 Working Group</div>
-    <div class="value">Nihaan · Ankit · Navjeet · Harshdeep · Abhijit · Deepak · Swapnil · Shweta</div>
-  </div>
-  <div class="item">
-    <div class="label">Stream Owners</div>
-    <div class="value">DevOps · <b>Ankit</b> &nbsp;·&nbsp; KM · <b>Deepak</b> &nbsp;·&nbsp; SDLC · <b>Nihaan</b></div>
-  </div>
-  <div class="item">
-    <div class="label">Cadence</div>
-    <div class="value">Bi-weekly framework review · Monday 18 May 2026 rollout</div>
-  </div>
 </div>
-
-</main>
-
-<footer>
-  Dhwani RIS · Group PM Office · 14 May 2026 · Day-1 framework session: 12 May 2026
-</footer>
 
 </body>
 </html>
