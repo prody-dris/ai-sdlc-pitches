@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhwani SDLC — AI-Native Pitches</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f5f5f4;
+    --muted: #a1a1aa;
+    --line: #27272a;
+    --accent: #ff6b35;
+    --accent-soft: rgba(255, 107, 53, 0.12);
+    --card: #141414;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .nav .brand { color: var(--accent); font-weight: 600; letter-spacing: 0.02em; }
+  .nav .meta { font-variant-numeric: tabular-nums; }
+
+  main { padding: 80px 80px 60px; max-width: 1400px; margin: 0 auto; }
+
+  .hero { margin-bottom: 64px; }
+  .hero p.tag {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin: 0 0 16px;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 1.05;
+    margin: 0 0 24px;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  .hero p.lede { font-size: 22px; line-height: 1.45; color: var(--muted); max-width: 900px; margin: 0; }
+
+  .parts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .part {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: all 200ms ease;
+  }
+  .part:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+  .part.live { border-color: var(--accent); background: linear-gradient(180deg, var(--accent-soft), var(--card)); }
+  .part.pending { opacity: 0.65; cursor: default; }
+  .part.pending:hover { transform: none; border-color: var(--line); }
+  .part .label {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .part h2 {
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .part p { font-size: 15px; color: var(--muted); margin: 0 0 24px; flex: 1; }
+  .part .owner {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+  .part .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .part.pending .status { color: var(--muted); }
+  .status .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .part.pending .status .dot { background: var(--muted); box-shadow: none; }
+
+  .meta-block {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .meta-block .item .label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .meta-block .item .value { font-size: 15px; color: var(--fg); }
+  .meta-block .item .value b { color: var(--accent); }
+
+  footer {
+    padding: 32px 80px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--line);
+    margin-top: 80px;
+  }
+
+  @media (max-width: 900px) {
+    main { padding: 40px 24px; }
+    .parts { grid-template-columns: 1fr; }
+    .meta-block { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="brand">Dhwani SDLC · AI-Native Pitches</div>
+  <div class="meta">14 May 2026 · Day-1 framework</div>
+</div>
+
+<main>
+
+<div class="hero">
+  <p class="tag">Closing Session 2/2 · 12:30 – 1:30 PM IST</p>
+  <h1>One framework, three pitches.</h1>
+  <p class="lede">The AI-led SDLC, structured per Day-1 (12 May 2026): three streams of software delivery, two always-on supports. Today we present one part each. Direction alignment first; pair-wise development after; v1 to the larger workgroup by EoD.</p>
+</div>
+
+<div class="parts">
+  <a href="https://prody-dris.github.io/ai-sdlc-rg-pitch/" class="part live">
+    <div class="label">Part 1 of 3</div>
+    <h2>SDLC — Requirement Gathering</h2>
+    <div class="owner">Owner · Nihaan + Harshdeep</div>
+    <p>Intent → Solutioning → TRD. 10 steps × tool × skill. Four-stack overlay with calibrated intensity per stack.</p>
+    <div class="status"><span class="dot"></span> Live · 21 slides</div>
+  </a>
+
+  <div class="part pending">
+    <div class="label">Part 2 of 3</div>
+    <h2>Knowledge Management</h2>
+    <div class="owner">Owner · Deepak</div>
+    <p>The always-on KM stream. Tools and skills that run across every SDLC phase — from MoM intake through Sol Doc archival to post-go-live retros.</p>
+    <div class="status"><span class="dot"></span> In development</div>
+  </div>
+
+  <div class="part pending">
+    <div class="label">Part 3 of 3</div>
+    <h2>Larger SDLC Pitch</h2>
+    <div class="owner">Owner · Working Group</div>
+    <p>The full picture: all five streams, the three verticals, the four stacks, and the rollout cadence. The umbrella that ties the parts together.</p>
+    <div class="status"><span class="dot"></span> In development</div>
+  </div>
+</div>
+
+<div class="meta-block">
+  <div class="item">
+    <div class="label">Day-1 Working Group</div>
+    <div class="value">Nihaan · Ankit · Navjeet · Harshdeep · Abhijit · Deepak · Swapnil · Shweta</div>
+  </div>
+  <div class="item">
+    <div class="label">Stream Owners</div>
+    <div class="value">DevOps · <b>Ankit</b> &nbsp;·&nbsp; KM · <b>Deepak</b> &nbsp;·&nbsp; SDLC · <b>Nihaan</b></div>
+  </div>
+  <div class="item">
+    <div class="label">Cadence</div>
+    <div class="value">Bi-weekly framework review · Monday 18 May 2026 rollout</div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  Dhwani RIS · Group PM Office · 14 May 2026 · Day-1 framework session: 12 May 2026
+</footer>
+
+</body>
+</html>
